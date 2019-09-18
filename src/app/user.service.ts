@@ -20,9 +20,7 @@ export class UserService {
     let result:Observable<UserModel>;
     
     let body = `username=${user.username}&password=${user.password}&grant_type=password`;
-    let options = {
-      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-  };
+    let options = {headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')};
     result=this.http.post<UserModel>("https://localhost:44327/Token",body,options);
     return result;
   }
@@ -32,17 +30,12 @@ export class UserService {
     this.dataSharingService.isUserLoggedIn.next(false);
 
   }
-  register(user:RegisterBindingModel):Observable<UserModel>{
+  register(user:RegisterBindingModel){
     let result:Observable<UserModel>;
     
-
-    let body = `username=${user.Email}&password=${user.Password}&grant_type=password`;
-    let options = {
-      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-  };
+   
     user.FirstName="123";
-    console.log(user);
-    result=this.http.post<UserModel>("https://localhost:44327/api/Account",user,options);
+    result=this.http.post<UserModel>("https://localhost:44327/api/Account",user);
    return result;
   }
 }

@@ -1,1 +1,7 @@
-<p>uploadimage works!</p>
+<form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
+    <div class="example-container" >
+        
+            <input  type="file" formControlName="image" placeholder="Image">
+            <button  mat-button>Submit</button>
+    </div>
+</form>

@@ -3,8 +3,9 @@
     <mat-toolbar-row>
         <a mat-button routerLink="/Images">Images</a>
         <a mat-button routerLink="/UploadImage">Upload</a>
-        <a mat-button routerLink="/Login">Login</a>
-        <a mat-button routerLink="/Register">Register</a>
+        <a mat-button *ngIf="!isUserLoggedIn" routerLink="/Login">Login</a>
+        <a mat-button *ngIf="!isUserLoggedIn" routerLink="/Register">Register</a>
+        <button mat-button (click)="onLogout()" *ngIf="isUserLoggedIn">Logout</button>
     </mat-toolbar-row>
 
   </mat-toolbar>

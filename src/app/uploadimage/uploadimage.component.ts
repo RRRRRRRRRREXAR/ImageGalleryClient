@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-uploadimage',
@@ -8,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class UploadimageComponent implements OnInit {
 
   constructor() { }
-
+  imageForm= new FormGroup({
+    image:new FormControl(''),
+  });
   ngOnInit() {
   }
 
