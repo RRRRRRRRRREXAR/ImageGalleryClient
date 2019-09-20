@@ -1,1 +1,14 @@
-<p>images works!</p>
+<mat-grid-list style="margin-top: 2em" cols="1" rowHeight="28em">
+    <mat-grid-tile *ngFor="let image of imageList" [style.background]='lightpink'>
+        <mat-card  class="example-card">
+            <mat-card-header>
+                <p class="text-center">DAROVA EPTA</p>
+            </mat-card-header>
+            <img mat-card-image src="{{image.link}}">
+            <mat-card-actions>
+                <button mat-button (click)="deleteImage(image.id)">Delete this</button>
+                <button mat-button (click)="rotate(image.id)">Rotate</button>
+            </mat-card-actions>
+            </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
