@@ -16,9 +16,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; 
-import {MatInputModule} from '@angular/material';
+import {MatInputModule, MatDialogModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { ImageDialogComponent } from './image-dialog/image-dialog.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     UploadimageComponent,
     ImagesComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    ImageDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -43,8 +45,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatInputModule,
     MatCardModule,
     MatGridListModule,
+    MatDialogModule    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ImagesComponent,ImageDialogComponent]
 })
 export class AppModule { }

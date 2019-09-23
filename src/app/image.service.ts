@@ -33,7 +33,35 @@ export class ImageService {
     result=this.http.delete("https://localhost:44327/api/Image",options);
     return result;
   }
-  public rotateImage(){
-    
+  public rotateImage(id:string){
+    let result:Observable<any>;
+    let params = new HttpParams()
+    .set('id',id );
+    let token =JSON.parse(localStorage.getItem("currentUser"));
+    let options = {headers: new HttpHeaders().set("Authorization", "Bearer "+token.token.access_token),params:params};
+    result=this.http.get("https://localhost:44327/api/Image/Rotate",options);
+    return result;
+  }
+
+  public getResizedImage(id:string,width:string,height:string){
+    let result:Observable<any>;
+    let params = new HttpParams()
+    .set('id',id )
+    .set('width',width)
+    .set('height',height);
+    let token =JSON.parse(localStorage.getItem("currentUser"));
+    let options = {headers: new HttpHeaders().set("Authorization", "Bearer "+token.token.access_token),params:params};
+    result=this.http.get("https://localhost:44327/api/Image/GetImage",options);
+    return result;
+  }
+
+  public getImage(id:string){
+    let result:Observable<ImageModel>;
+    let params = new HttpParams()
+    .set('id',id );
+    let token =JSON.parse(localStorage.getItem("currentUser"));
+    let options = {headers: new HttpHeaders().set("Authorization", "Bearer "+token.token.access_token),params:params};
+    result=this.http.get<ImageModel>("https://localhost:44327/GetImage/",options);
+    return result;
   }
 }

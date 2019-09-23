@@ -1,0 +1,12 @@
+<mat-card  class="example-card">
+    <mat-card-header>
+        <p class="text-center">DAROVA EPTA</p>
+    </mat-card-header>
+    <img mat-card-image src="{{image.link}}">
+    <mat-card-actions>
+        <input type="number"  placeholder="width" matinput>
+        <input type="number"  placeholder="heigth" matinput>
+        <button mat-button (click)="resizeImage(image.id)">Delete this</button>
+        <button mat-button (click)="rotateImage(image.id)">Rotate</button>
+    </mat-card-actions>
+    </mat-card>
