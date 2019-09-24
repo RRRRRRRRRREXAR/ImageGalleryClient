@@ -39,7 +39,7 @@ export class ImageService {
     .set('id',id );
     let token =JSON.parse(localStorage.getItem("currentUser"));
     let options = {headers: new HttpHeaders().set("Authorization", "Bearer "+token.token.access_token),params:params};
-    result=this.http.get("https://localhost:44327/api/Image/Rotate",options);
+    result=this.http.get("https://localhost:44327/Rotate",options);
     return result;
   }
 
@@ -50,8 +50,10 @@ export class ImageService {
     .set('width',width)
     .set('height',height);
     let token =JSON.parse(localStorage.getItem("currentUser"));
-    let options = {headers: new HttpHeaders().set("Authorization", "Bearer "+token.token.access_token),params:params};
-    result=this.http.get("https://localhost:44327/api/Image/GetImage",options);
+    let options = {headers: new HttpHeaders().set("Authorization", "Bearer "+token.token.access_token)
+    .set("Content-Type","image/png")
+    ,params:params};
+    result=this.http.get<any>("https://localhost:44327/api/Image/GetImage",options);
     return result;
   }
 

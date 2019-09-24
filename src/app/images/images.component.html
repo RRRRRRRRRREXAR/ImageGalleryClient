@@ -7,7 +7,7 @@
             <img (click)="onImageClick(image.id)" mat-card-image src="{{image.link}}">
             <mat-card-actions>
                 <button mat-button (click)="deleteImage(image.id)">Delete this</button>
-                <button mat-button (click)="rotate(image.id)">Rotate</button>
+                <button mat-button (click)="rotateImage(image.id)">Rotate</button>
             </mat-card-actions>
             </mat-card>
     </mat-grid-tile>

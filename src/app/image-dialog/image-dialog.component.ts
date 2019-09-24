@@ -3,6 +3,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { DialogData } from '../images/images.component';
 import { ImageService } from '../image.service';
 import { ImageModel } from '../models/ImageModel';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-image-dialog',
@@ -16,8 +17,10 @@ export class ImageDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: ImageModel,private imageService:ImageService) {
       this.image=data;
     }
-    @Input('width') width: string;
-    @Input('height') height: string;
+    resizeForm= new FormGroup({
+      width:new FormControl(''),
+    height:new FormControl(''),
+    });
   image:ImageModel;
   onNoClick(): void {
     this.dialogRef.close();
@@ -26,9 +29,15 @@ export class ImageDialogComponent implements OnInit {
     
   }
   rotateImage(id:string){
-    this.imageService.rotateImage(id);
+    this.imageService.rotateImage(id).subscribe();
   }
-  resizeImage(id:string,width:string,height:string){
-    this.imageService.getResizedImage(id,width,height);
+  resizeImage(){
+    var width=this.resizeForm.get("width").value;
+    var height=this.resizeForm.get("height").value;
+    console.log(width)
+    console.log(height);
+    this.imageService.getResizedImage(this.image.id,width,height).subscribe(data=>{
+      console.log(data);
+    });
   }
 }

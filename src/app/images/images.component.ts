@@ -39,5 +39,8 @@ export class ImagesComponent implements OnInit {
       data:this.imageList.filter(img=>img.id==id)[0]
     });
   }
+  rotateImage(id:string){
+    this.imageService.rotateImage(id).subscribe();
+  }
   
 }

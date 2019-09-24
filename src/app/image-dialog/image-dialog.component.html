@@ -4,9 +4,12 @@
     </mat-card-header>
     <img mat-card-image src="{{image.link}}">
     <mat-card-actions>
-        <input type="number"  placeholder="width" matinput>
-        <input type="number"  placeholder="heigth" matinput>
-        <button mat-button (click)="resizeImage(image.id)">Delete this</button>
+        <form [formGroup] = "resizeForm" (ngSubmit)="resizeImage(image.id)">
+                <input type="number"  formControlName="width"  placeholder="width" matinput>
+                <input type="number" formControlName="height" placeholder="heigth" matinput>
+                <button mat-button type="submit">Resize this</button>
+        </form>
+        
         <button mat-button (click)="rotateImage(image.id)">Rotate</button>
     </mat-card-actions>
     </mat-card>
